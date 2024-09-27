@@ -2,6 +2,7 @@ from datetime import datetime
 from flask import Flask, render_template, request , flash
 from flask_sqlalchemy import SQLAlchemy
 from flask_mail import Mail, Message
+import os
 
 app = Flask(__name__)
 
@@ -11,7 +12,7 @@ app.config["MAIL_SERVER"] = "smtp.gmail.com"
 app.config["MAIL_PORT"] = 465
 app.config["MAIL_USE_SSL"] = True
 app.config["MAIL_USERNAME"] = "ilkanpython@gmail.com"
-app.config["MAIL_PASSWORD"] = "aqficubjwzutacal"
+app.config["MAIL_PASSWORD"] = os.getenv("ILKAN_FLASK_PASSWORD")
 db = SQLAlchemy(app)
 
 mail = Mail(app)
